@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Signup - Auth Demo</title>
+  <style>
+    :root{
+      --accent:#7f00ff;
+      --accent2:#e100ff;
+      --card:#ffffff;
+      --muted:#666;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter,Arial,Helvetica,sans-serif;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .card{
+      width:380px;
+      background:var(--card);
+      border-radius:14px;
+      padding:28px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.18);
+    }
+    h2{ margin:0 0 8px; color:var(--accent); }
+    p.sub{ margin:0 0 18px; color:var(--muted); font-size:14px; }
+
+    .field{ margin-bottom:12px; }
+    label{ display:block; font-size:13px; color:#222; margin-bottom:6px; }
+    input[type="text"], input[type="email"], input[type="password"]{
+      width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ddd; font-size:14px;
+    }
+    input:focus{ outline:none; border-color:var(--accent); box-shadow:0 0 0 4px rgba(127,0,255,0.07); }
+
+    .small{ font-size:13px; color:#b33; margin-top:6px; display:none; }
+
+    .btn{
+      width:100%; margin-top:10px; background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:white; padding:11px; border-radius:10px; border:none; font-weight:600; cursor:pointer;
+    }
+    .link-row{ margin-top:14px; text-align:center; font-size:14px; }
+    .link-row a{ color:var(--accent); text-decoration:none; font-weight:600; }
+
+    .or{ text-align:center; margin:14px 0; color:#999; font-size:13px; }
+
+    @media(max-width:420px){
+      .card{ width:100%; padding:20px; border-radius:10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <h2>Create account</h2>
+    <p class="sub">Signup to access the demo dashboard — simple client-side validation included.</p>
+
+    <form id="signupForm" onsubmit="return handleSubmit(event)">
+      <div class="field">
+        <label for="name">Full name</label>
+        <input id="name" type="text" placeholder="Your name" required />
+        <div id="err-name" class="small"></div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" required />
+        <

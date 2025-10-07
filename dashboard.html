@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard - Auth Demo</title>
+  <style>
+    body{
+      margin:0; font-family:Inter,Arial; background:linear-gradient(180deg,#fafafa,#f2f0ff);
+      min-height:100vh; display:flex; justify-content:center; align-items:flex-start; padding:40px;
+    }
+    .wrap{ width:720px; background:white; border-radius:12px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,0.08); }
+    h1{ color:#3b0f8a; margin:0 0 8px; }
+    p{ color:#444; margin:6px 0 16px; }
+    .card{ display:flex; gap:12px; align-items:center; padding:14px; border-radius:10px; border:1px solid #eef; }
+    .avatar{ width:56px; height:56px; border-radius:50%; background:linear-gradient(90deg,#7f00ff,#e100ff); color:white; display:flex; align-items:center; justify-content:center; font-weight:700;}
+    .btn-logout{ margin-left:auto; background:#ff4d6d; color:white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer;}
+    .info{ font-size:15px; color:#333; }
+    .muted{ color:#777; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <h1>Welcome</h1>
+    <p class="muted">This is a demo dashboard for the Authentication project.</p>
+
+    <div class="card" id="profileCard">
+      <div class="avatar" id="avatar">A</div>
+      <div>
+        <div class="info" id="userName">Anonymous</div>
+        <div class="muted" id="userEmail">—</div>
+      </div>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+
+    <section style="margin-top:18px">
+      <h3 style="margin:12px 0 8px">Quick Actions</h3>
+      <div style="display:flex; gap:12px">
+        <button onclick="alert('Demo: No real backend')">Edit Profile</button>
+        <button onclick="alert('Demo: Settings')">Settings</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // load demo user from localStorage
+    const raw = localStorage.getItem('demo_user');
+    if(!raw){
+      // not logged in, redirect to signup/login
+      location.href = 'signup.html';
+    } else {
+      const u = JSON.parse(raw);
+      document.getElementById('userName').textContent = u.name || 'User';
+      document.getElementById('userEmail').textContent = u.email || '';
+      document.getElementById('avatar').textContent = (u.name||'U').charAt(0).toUpperCase();
+    }
+
+    function logout(){
+      localStorage.removeItem('demo_user');
+      location.href = 'login.html'; // if not present, user can go to signup.html too
+    }
+  </script>
+</body>
+</html>
